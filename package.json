@@ -1,0 +1,23 @@
+{
+  "name": "io.nekonya.tinax.tween",
+  "version": "6.6.0",
+  "displayName": "TinaX.Tween",
+  "description": "UIKit Animation",
+  "unity": "2019.4",
+  "keywords": [
+    "TinaX",
+    "TinaX Framework",
+    "Tween",
+    "Animation"
+  ],
+  "author": {
+    "name": "yomunsam",
+    "email": "yomunsam@nekonya.io",
+    "url": "https://yomunchan.moe"
+  },
+  "type": "library",
+  "license":"MIT",
+  "dependencies": {
+    "io.nekonya.tinax.core":"6.6.22"
+  }
+}
