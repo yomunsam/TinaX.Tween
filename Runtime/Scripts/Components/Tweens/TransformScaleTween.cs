@@ -80,9 +80,6 @@ namespace TinaX.Tween.Components
                 .Subscribe(value => { this.Target.localScale = value; }, tweenFinish);
         }
 
-        
-
-        
 
         public override void Stop()
         {
