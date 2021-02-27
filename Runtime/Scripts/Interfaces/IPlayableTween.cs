@@ -28,6 +28,11 @@ namespace TinaX.Tween
         Action OnFinish { get; set; }
 
         /// <summary>
+        /// 动画被主动中断后的事件
+        /// </summary>
+        Action OnStop { get; set; }
+
+        /// <summary>
         /// 动画开始前的准备操作
         /// </summary>
         void Ready();

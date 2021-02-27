@@ -20,6 +20,8 @@ namespace TinaX.Tween.Components
 
         public override Transform GetDefaultTarget()
         {
+            if (this == null)
+                return null;
             return this.transform;
         }
 
@@ -77,12 +79,14 @@ namespace TinaX.Tween.Components
                 this.Duration,
                 this.EaseType,
                 this.DelayBefore)
-                .Subscribe(value => { this.Target.localScale = value; }, tweenFinish);
+                .Subscribe(value => { this.Target.localScale = value; }, tweenFinish)
+                .AddTo(this.Target);
         }
 
 
         public override void Stop()
         {
+            base.Stop();
             this.TweenRxDisposable?.Dispose();
             this.TweenRxDisposable = null;
             pingpong_switch = false;
@@ -110,7 +114,8 @@ namespace TinaX.Tween.Components
                         obsv3 = obsv3.Delay(TimeSpan_PongDelay);
                 }
 
-                this.TweenRxDisposable = obsv3.Subscribe(value => { this.Target.localScale = value; }, tweenFinish);
+                this.TweenRxDisposable = obsv3.Subscribe(value => { this.Target.localScale = value; }, tweenFinish)
+                    .AddTo(this.Target);
             }
             else
             {

@@ -1,6 +1,7 @@
 ﻿using System;
 using TinaX.Tween.UnityEvents;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace TinaX.Tween.Components
 {
@@ -20,6 +21,7 @@ namespace TinaX.Tween.Components
         public bool _PlayOnAwake = false;
 
         public OnTweenFinishEvent _OnTweenFinish = new OnTweenFinishEvent();
+        public UnityEvent _OnTweenStop = new UnityEvent();
         #endregion
         
         public float Duration => _Duration;
@@ -31,12 +33,17 @@ namespace TinaX.Tween.Components
         public virtual bool Playing { get; private set; } = false;
 
         public Action OnFinish { get; set; }
+        public Action OnStop { get; set; }
 
 
         public abstract void Ready();
         public abstract void BeginPlay();
 
-        public abstract void Stop();
+        public virtual void Stop()
+        {
+            OnStop?.Invoke();
+            _OnTweenStop?.Invoke();
+        }
 
         protected virtual void Finish()
         {
