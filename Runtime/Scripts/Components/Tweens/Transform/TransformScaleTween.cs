@@ -37,17 +37,17 @@ namespace TinaX.Tween.Components
                 valid_tween = false;
             }
 
-            if (!this.AutoOriginValue)
+            if (!this._AutoOriginValue)
             {
-                this.Target.localScale = this.FromValue;
+                this.Target.localScale = this._FromValue;
             }
             else
             {
                 this._PingPong = false; //如果自动识别初始值，则不应该可以PingPong（规则是只有明确指定了初始值和目标值才可以PingPong）
-                this.AutoTargetValue = false;
+                this._AutoTargetValue = false;
             }
-            origin_value = this.AutoOriginValue ? this.Target.localScale : this.FromValue;
-            target_value = this.AutoTargetValue ? this.Target.localScale : this.ToValue;
+            origin_value = this._AutoOriginValue ? this.Target.localScale : this._FromValue;
+            target_value = this._AutoTargetValue ? this.Target.localScale : this._ToValue;
 
             TimeSpan_PingPongDelay = TimeSpan.FromSeconds(this.PingPongDelay);
             TimeSpan_PongDelay = TimeSpan.FromSeconds(this.PongDelay);
@@ -98,8 +98,8 @@ namespace TinaX.Tween.Components
             {
                 this.pingpong_switch = !this.pingpong_switch;
                 this.TweenRxDisposable?.Dispose();
-                var obsv3 = Tween.Play(!pingpong_switch ? this.FromValue : this.ToValue,
-                    !pingpong_switch ? this.ToValue : this.FromValue,
+                var obsv3 = Tween.Play(!pingpong_switch ? this._FromValue : this._ToValue,
+                    !pingpong_switch ? this._ToValue : this._FromValue,
                     this.Duration,
                     this.EaseType);
                 //延迟处理

@@ -84,11 +84,11 @@ namespace TinaX.Tween.Components
         /// <summary>
         /// 初始值
         /// </summary>
-        public TValue FromValue;
-        public TValue ToValue;
+        public TValue _FromValue;
+        public TValue _ToValue;
 
-        public bool AutoOriginValue = false;
-        public bool AutoTargetValue = false;
+        public bool _AutoOriginValue = false;
+        public bool _AutoTargetValue = false;
         #endregion
 
         public TTarget Target

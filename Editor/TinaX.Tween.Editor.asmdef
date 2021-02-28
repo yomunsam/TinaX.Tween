@@ -1,0 +1,19 @@
+{
+    "name": "TinaX.Tween.Editor",
+    "references": [
+        "GUID:4e58fd8b44ff4c14f917ce28647bad94",
+        "GUID:eb0b36a1eab17c54a93dfa5bf816d363",
+        "GUID:50eb57b1f8b7ed54d919c301610d7156"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
