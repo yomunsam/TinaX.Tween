@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using TinaX.Tween.Components;
 using TinaXEditor.Utils;
 using UnityEditor;

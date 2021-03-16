@@ -2,7 +2,7 @@
   "name": "io.nekonya.tinax.tween",
   "version": "6.6.0",
   "displayName": "TinaX.Tween",
-  "description": "UIKit Animation",
+  "description": "Tween library for TinaX Framework",
   "unity": "2019.4",
   "keywords": [
     "TinaX",
@@ -18,6 +18,6 @@
   "type": "library",
   "license":"MIT",
   "dependencies": {
-    "io.nekonya.tinax.core":"6.6.22"
+    "com.neuecc.unirx": "7.1.0"
   }
 }

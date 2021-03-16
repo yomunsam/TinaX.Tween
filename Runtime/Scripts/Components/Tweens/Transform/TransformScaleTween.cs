@@ -1,9 +1,11 @@
-﻿using System;
+using System;
+using TinaX.Tween.Const;
 using UniRx;
 using UnityEngine;
 
 namespace TinaX.Tween.Components
 {
+    [AddComponentMenu(TweenConst.ComponentMenuRootPath + "Transform/Transform Scale")]
     public class TransformScaleTween : PingPongTweenRxComponentBase<Transform, Vector3>
     {
         private Vector3? origin_value;
