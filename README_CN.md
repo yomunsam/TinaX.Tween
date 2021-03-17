@@ -62,7 +62,7 @@ Tween.Play(1, 10)
 
 ## 安装
 
-请访问文档查看安装指引：[安装TinaX](https://tinax.corala.space/#/cmn-hans/install)
+请访问文档查看安装指引：[安装TinaX](https://tinax.corala.space/#/cmn-hans/tinax/install/install_tinax)
 
 
 
