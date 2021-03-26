@@ -79,7 +79,7 @@ namespace TinaX.Tween.Components
                 origin_value.Value,
                 target_value.Value,
                 this.Duration,
-                this.EaseType,
+                this._EaseType,
                 this.DelayBefore)
                 .Subscribe(value => { this.Target.localScale = value; }, tweenFinish)
                 .AddTo(this.Target);
@@ -103,7 +103,7 @@ namespace TinaX.Tween.Components
                 var obsv3 = Tween.Play(!pingpong_switch ? this._FromValue : this._ToValue,
                     !pingpong_switch ? this._ToValue : this._FromValue,
                     this.Duration,
-                    this.EaseType);
+                    this._EaseType);
                 //延迟处理
                 if (!pingpong_switch)
                 {

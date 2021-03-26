@@ -1,4 +1,3 @@
-using System;
 using TinaX.Tween.Components;
 using TinaXEditor.Utils;
 using UnityEditor;
@@ -7,58 +6,43 @@ using UnityEngine;
 namespace TinaXEditor.Tween.CustomEditors
 {
     /// <summary>
-    /// Tween组件基类
+    /// 实现了PingPong功能的TweenRx组件基类
     /// </summary>
-    [CustomEditor(typeof(TweenComponentBase), true)]
-    public class TweenComponentBaseCustomEditor : Editor
+    [CustomEditor(typeof(PingPongTweenRxComponentBase),true)]
+    public class PingPongTweenRxComponentBaseCustomEditor : TweenRxComponentBaseCustomEditor
     {
-        public string Title { get; protected set; } = "Tween";
-        protected Action<SerializedProperty, SerializedProperty> SetOriginValueOnClicked;
-        protected Action<SerializedProperty, SerializedProperty> SetTargetValueOnClicked;
-
-        protected virtual TweenComponentBase m_TweenComponentBase { get; set; }
-        protected TweenEditorUIDraw UIDraw = new TweenEditorUIDraw();
-
-
-
-        protected virtual void OnEnable()
-        {
-            m_TweenComponentBase = (TweenComponentBase)target;
-        }
-
         public override void OnInspectorGUI()
         {
             //base.OnInspectorGUI();
+
             var _serializedObject = this.serializedObject;
             UIDraw.DrawTitle(this.Title);
             EditorGUIUtil.HorizontalLine(1, Color.gray);
             EditorGUILayout.Space();
 
             UIDraw.DrawDuration(ref _serializedObject);
+            UIDraw.DrawTweenRxEaseValue(ref _serializedObject);
             UIDraw.DrawPlayOnAwake(ref _serializedObject);
             UIDraw.DrawDelayBefore(ref _serializedObject);
-            UIDraw.DrawDescription(ref _serializedObject);
 
+            EditorGUILayout.Space();
+            EditorGUIUtil.HorizontalLine(1, Color.gray);
+            EditorGUILayout.Space();
+            UIDraw.DrawPingPong(ref _serializedObject);
+
+            UIDraw.DrawDescription(ref _serializedObject);
             EditorGUILayout.Space();
             UIDraw.DrawEvents_FinishAndStop(ref _serializedObject);
 
             _serializedObject.ApplyModifiedProperties();
         }
-
-        /// <summary>
-        /// 使用Unity自己的方式绘制InspectorGUI
-        /// </summary>
-        protected void DrawNativeInspectorGUI()
-        {
-            base.OnInspectorGUI();
-        }
     }
 
     /// <summary>
-    /// 泛型Tween基类
+    /// 实现了PingPong功能的【泛型】TweenRx组件基类
     /// </summary>
-    [CustomEditor(typeof(TweenComponentBase<,>), true)]
-    public class TweenComponentBaseCustomEditorGeneric : TweenComponentBaseCustomEditor
+    [CustomEditor(typeof(PingPongTweenRxComponentBase<,>), true)]
+    public class PingPongTweenRxComponentBaseCustomEditorGeneric : TweenRxComponentBaseCustomEditorGeneric
     {
         public override void OnInspectorGUI()
         {
@@ -80,10 +64,21 @@ namespace TinaXEditor.Tween.CustomEditors
             EditorGUILayout.Space();
 
             UIDraw.DrawDuration(ref _serializedObject);
+            UIDraw.DrawTweenRxEaseValue(ref _serializedObject);
             UIDraw.DrawPlayOnAwake(ref _serializedObject);
             UIDraw.DrawDelayBefore(ref _serializedObject);
-            UIDraw.DrawDescription(ref _serializedObject);
 
+            EditorGUILayout.Space();
+            EditorGUIUtil.HorizontalLine(1, Color.gray);
+            EditorGUILayout.Space();
+
+            UIDraw.DrawPingPong(ref _serializedObject);
+
+            EditorGUILayout.Space();
+            EditorGUIUtil.HorizontalLine(1, Color.gray);
+            EditorGUILayout.Space();
+
+            UIDraw.DrawDescription(ref _serializedObject);
             EditorGUILayout.Space();
             UIDraw.DrawEvents_FinishAndStop(ref _serializedObject);
 
@@ -92,4 +87,3 @@ namespace TinaXEditor.Tween.CustomEditors
     }
 
 }
-

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +19,8 @@ namespace TinaXEditor.Tween.CustomEditors
                 {
                     _Title = new GUIStyle(EditorStyles.boldLabel);
                     _Title.fontSize += 2;
+                    _Title.padding.top += 2;
+                    _Title.alignment = TextAnchor.MiddleCenter;
                 }
                 return _Title;
             }

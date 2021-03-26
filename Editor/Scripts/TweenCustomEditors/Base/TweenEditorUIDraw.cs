@@ -1,4 +1,4 @@
-﻿using TinaX.Tween;
+using TinaX.Tween;
 using TinaX.Tween.Components;
 using UnityEditor;
 using UnityEngine;
@@ -20,6 +20,10 @@ namespace TinaXEditor.Tween.CustomEditors
         private SerializedProperty _toValue;
         private SerializedProperty _autoOriginValue;
         private SerializedProperty _autoTargetValue;
+        private SerializedProperty _ease;
+        private SerializedProperty _pingpong;
+        private SerializedProperty _pingpongDelay;
+        private SerializedProperty _pongDelay;
 
         private bool _foldout_events;
 
@@ -28,6 +32,11 @@ namespace TinaXEditor.Tween.CustomEditors
         private GUIContent GC_DelayBefore;
         private GUIContent GC_Description;
         private GUIContent GC_Target;
+        private GUIContent GC_Ease;
+        private GUIContent GC_PingPong;
+        private GUIContent GC_PingPongTips;
+        private GUIContent GC_PingPongDelay;
+        private GUIContent GC_PongDelay;
         private GUIContent GC_Events
         {
             get
@@ -231,6 +240,7 @@ namespace TinaXEditor.Tween.CustomEditors
             EditorGUILayout.PropertyField(_autoTargetValue, true);
         }
 
+
         public void DrawSetAsOriginValueOrTargetValue(ref Action<SerializedProperty, SerializedProperty> SetOriginOnClicked,ref Action<SerializedProperty, SerializedProperty> SetTargetOnClicked)
         {
             //显示“设置当前值为初始值或目标值”的按钮，其中Action的两个参数，第一个固定为"Target"，第二个为FromValue或ToValue.
@@ -252,12 +262,121 @@ namespace TinaXEditor.Tween.CustomEditors
             {
                 if (GUILayout.Button(EditorGUIUtil.IsCmnHans ? "目标值" : "Target", GUILayout.MaxWidth(50)))
                 {
-                    SetOriginOnClicked?.Invoke(_target, _fromValue);
+                    SetTargetOnClicked?.Invoke(_target, _toValue);
                 }
             }
+            EditorGUILayout.EndHorizontal();
         }
 
+        /// <summary>
+        /// 对于TweenRx组件，绘制出Ease设置
+        /// </summary>
+        /// <param name="serializedObject"></param>
+        public void DrawTweenRxEaseValue(ref SerializedObject serializedObject)
+        {
+            if (_ease == null && serializedObject != null)
+                _ease = serializedObject.FindProperty("_EaseType");
 
+            if (GC_Ease == null)
+            {
+                switch (Application.systemLanguage)
+                {
+                    default:
+                        GC_Ease = new GUIContent("Ease");
+                        break;
+                    case SystemLanguage.Chinese:
+                    case SystemLanguage.ChineseSimplified:
+                        GC_Ease = new GUIContent("Ease","也不知道这玩意要怎么翻译~ 欸嘿");
+                        break;
+                }
+            }
+
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.PropertyField(_ease, GC_Ease, true);
+            EditorGUILayout.EndHorizontal();
+        }
+
+        /// <summary>
+        /// PingPong相关的设置都放在这里了
+        /// </summary>
+        /// <param name="serializedObject"></param>
+        public void DrawPingPong(ref SerializedObject serializedObject)
+        {
+            if (_pingpong == null && serializedObject != null)
+                _pingpong = serializedObject.FindProperty("_PingPong");
+
+            if (_pingpongDelay == null && serializedObject != null)
+                _pingpongDelay = serializedObject.FindProperty("_PingPongDelay");
+
+            if (_pongDelay == null && serializedObject != null)
+                _pongDelay = serializedObject.FindProperty("_PongDelay");
+
+
+            if (GC_PingPong == null)
+            {
+                switch (Application.systemLanguage)
+                {
+                    default:
+                        GC_PingPong = new GUIContent("PingPong");
+                        break;
+                }
+            }
+
+            if (GC_PingPongTips == null)
+            {
+                switch (Application.systemLanguage)
+                {
+                    default:
+                        GC_PingPongTips = new GUIContent("If PingPong enable, \"OnTweenFinish\" event will never be called.");
+                        break;
+                    case SystemLanguage.Chinese:
+                    case SystemLanguage.ChineseSimplified:
+                        GC_PingPongTips = new GUIContent("如果启用PingPong，“OnTweenFinish”事件将永远不会被触发");
+                        break;
+                }
+            }
+
+            if (GC_PingPongDelay == null)
+            {
+                switch (Application.systemLanguage)
+                {
+                    default:
+                        GC_PingPongDelay = new GUIContent("PingPong Delay");
+                        break;
+                    case SystemLanguage.Chinese:
+                    case SystemLanguage.ChineseSimplified:
+                        GC_PingPongDelay = new GUIContent("PingPong 延迟");
+                        break;
+                }
+            }
+
+            if (GC_PongDelay == null)
+            {
+                switch (Application.systemLanguage)
+                {
+                    default:
+                        GC_PongDelay = new GUIContent("Pong Delay");
+                        break;
+                    case SystemLanguage.Chinese:
+                    case SystemLanguage.ChineseSimplified:
+                        GC_PongDelay = new GUIContent("Pong 延迟");
+                        break;
+                }
+            }
+
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.PropertyField(_pingpong, GC_PingPong, true);
+            EditorGUILayout.EndHorizontal();
+
+            if (_pingpong.boolValue)
+            {
+                EditorGUILayout.HelpBox(GC_PingPongTips);
+                //PingPong的子项设置
+                EditorGUILayout.PropertyField(_pingpongDelay, GC_PingPongDelay, true);
+                EditorGUILayout.PropertyField(_pongDelay, GC_PongDelay, true);
+
+            }
+        }
 
 
         public void DrawEvents_FinishAndStop(ref SerializedObject serializedObject)
@@ -275,5 +394,6 @@ namespace TinaXEditor.Tween.CustomEditors
                 EditorGUILayout.PropertyField(_onTweenStop);
             }
         }
+
     }
 }
