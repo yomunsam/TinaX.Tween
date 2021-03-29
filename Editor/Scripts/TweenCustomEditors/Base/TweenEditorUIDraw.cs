@@ -246,7 +246,7 @@ namespace TinaXEditor.Tween.CustomEditors
             //显示“设置当前值为初始值或目标值”的按钮，其中Action的两个参数，第一个固定为"Target"，第二个为FromValue或ToValue.
             if (SetOriginOnClicked == null && SetTargetOnClicked == null)
                 return;
-            if (_target == null)
+            if (_target.objectReferenceValue == null)
                 return;
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.LabelField(EditorGUIUtil.IsCmnHans ? "设置当前值为:" : "Set current value as:", GUILayout.MaxWidth(140));
