@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +18,11 @@ namespace TinaX.Tween.Components
         public float _PongDelay = 0f;
         #endregion
 
-        public bool PingPong => _PingPong;
+        public bool PingPong
+        {
+            get => _PingPong;
+            set => _PingPong = value;
+        }
         public float PingPongDelay => _PingPongDelay;
         public float PongDelay => _PongDelay;
 
@@ -40,7 +44,11 @@ namespace TinaX.Tween.Components
         public float _PongDelay = 0f;
         #endregion
 
-        public bool PingPong => _PingPong;
+        public bool PingPong
+        {
+            get => _PingPong;
+            set => _PingPong = value;
+        }
         public float PingPongDelay => _PingPongDelay;
         public float PongDelay => _PongDelay;
 

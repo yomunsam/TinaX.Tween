@@ -209,7 +209,21 @@ namespace TinaXEditor.Tween.CustomEditors
             }
             EditorGUILayout.PropertyField(_fromValue, true);
         }
-        
+
+        public void DrawFromValueSlider(ref SerializedObject serializedObject, float leftValue, float rightValue)
+        {
+            if (_fromValue == null && serializedObject != null)
+                _fromValue = serializedObject.FindProperty("_FromValue");
+
+            if (_autoOriginValue != null)
+            {
+                if (_autoOriginValue.boolValue)
+                    return;
+            }
+            _fromValue.floatValue = EditorGUILayout.Slider(_fromValue.displayName, _fromValue.floatValue, leftValue, rightValue);
+        }
+
+
         public void DrawToValue(ref SerializedObject serializedObject)
         {
             if (_toValue == null && serializedObject != null)
@@ -221,6 +235,19 @@ namespace TinaXEditor.Tween.CustomEditors
                     return;
             }
             EditorGUILayout.PropertyField(_toValue, true);
+        }
+
+        public void DrawToValueSlider(ref SerializedObject serializedObject, float leftValue, float rightValue)
+        {
+            if (_toValue == null && serializedObject != null)
+                _toValue = serializedObject.FindProperty("_ToValue");
+
+            if (_autoTargetValue != null)
+            {
+                if (_autoTargetValue.boolValue)
+                    return;
+            }
+            _toValue.floatValue = EditorGUILayout.Slider(_toValue.displayName, _toValue.floatValue, leftValue, rightValue);
         }
 
 

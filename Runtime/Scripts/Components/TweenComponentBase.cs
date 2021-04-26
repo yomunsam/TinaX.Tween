@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using TinaX.Tween.UnityEvents;
 using UnityEngine;
 using UnityEngine.Events;
@@ -24,8 +24,8 @@ namespace TinaX.Tween.Components
         public UnityEvent _OnTweenStop = new UnityEvent();
         #endregion
         
-        public float Duration => _Duration;
-        public float DelayBefore => _DelayBefore;
+        public virtual float Duration => _Duration;
+        public virtual float DelayBefore => _DelayBefore;
 
         /// <summary>
         /// 是否正在播放

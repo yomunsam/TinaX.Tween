@@ -14,14 +14,17 @@ namespace TinaX.Tween.Components
         public float _PongDelay = 0f;
         #endregion
 
-        public bool PingPong => _PingPong;
+        public bool PingPong
+        {
+            get => _PingPong;
+            set => _PingPong = value;
+        }
         public float PingPongDelay => _PingPongDelay;
         public float PongDelay => _PongDelay;
 
         public Action OnPing { get; set; }
         public Action OnPong { get; set; }
         public Action OnPingPong { get; set; }
-
     }
 
     public abstract class PingPongTweenComponentBase<TTarget, TValue> : TweenComponentBase<TTarget, TValue>, IPingPong where TTarget: UnityEngine.Object
@@ -36,7 +39,11 @@ namespace TinaX.Tween.Components
         public float _PongDelay = 0f;
         #endregion
 
-        public bool PingPong => _PingPong;
+        public bool PingPong
+        {
+            get => _PingPong;
+            set => _PingPong = value;
+        }
         public float PingPongDelay => _PingPongDelay;
         public float PongDelay => _PongDelay;
 

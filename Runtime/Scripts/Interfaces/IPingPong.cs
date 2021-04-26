@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace TinaX.Tween
 {
@@ -7,7 +7,7 @@ namespace TinaX.Tween
     /// </summary>
     public interface IPingPong
     {
-        bool PingPong { get; }
+        bool PingPong { get; set; }
 
         /// <summary>
         /// 每次PingPong之间的延迟
