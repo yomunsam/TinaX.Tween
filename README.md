@@ -8,12 +8,15 @@
 
 <!-- [![LICENSE](https://camo.githubusercontent.com/3867ce531c10be1c59fae9642d8feca417d39b58/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c6963656e73652f636f6f6b6965592f596561726e696e672e737667)](https://github.com/yomunsam/TinaX/blob/master/LICENSE) -->
 
-[TinaX](https://github.com/yomunsam/TinaX)是一个简洁、完整、愉快的开箱即用的Unity应用游戏开发框架， 它采用"Unity 包"的形式提供功能。
 
-`TinaX.Tween`为[TinaX Framework](https://github.com/yomunsam/TinaX)提供了轻量级补间动画库。
+[TinaX](https://github.com/yomunsam/TinaX) is a Unity-based framework, simple , complete and delightful, ready to use.
 
-- 轻量级补间动画库
-- 无需编写代码的补间动画组件
+TinaX provides functionality in the form of "Unity packages". 
+
+`TinaX.Tween` provides a lightweight tween animation library for [TinaX Framework](https://github.com/yomunsam/TinaX).
+
+- Lightweight tween animation library
+- Tween animation components that can be used without coding
 
 <br>
 
@@ -26,11 +29,11 @@ package name: `io.nekonya.tinax.tween`
 
 ## QuickStart
 
-> 本库的核心功能基于[TweenRx](https://github.com/fumobox/TweenRx)项目（MIT License），您也可以直接访问TweenRx仓库页面查看相关文档。
+> The core function of this library is based on [TweenRx](https://github.com/fumobox/TweenRx) (MIT license). You can also directly visit TweenRx's repo to view relevant documents.
 
 <br>
 
-### 简单的浮点型补间动画
+### Simple float animation
 
 ``` csharp
 using UniRx;
@@ -45,35 +48,32 @@ Tween.Play(1, 10)
 
 <br>
 
-### 补见动画组件
+### Tween component
 
-我们可以在编辑器中使用组件无需编写代码实现补间动画功能。
+We can use components in the editor without coding to achieve tween animation function.
 
-![](README.assets~/img_cn.png)
-
-
+![1619467493256](README.assets~/1619467493256.png)
 
 
-更多用法请 [查看文档](https://tinax.corala.space).
+
+For more usage, please [see the document](https://tinax.corala.space).
 
 <br>
 
 ------
 
-## 安装
+## Install
 
-请访问文档查看安装指引：[安装TinaX](https://tinax.corala.space/#/cmn-hans/tinax/install/install_tinax)
+Please visit the documentation for installation instructions：[Install TinaX](https://tinax.corala.space/#/cmn-hans/tinax/install/install_tinax)
 
 
 
 <br><br>
 ------
 
-## 依赖
+## Dependencies
 
-本项目（包）直接依赖以下包
-
-- [io.nekonya.tinax.core](https://github.com/yomunsam/tinax.core) : `git://github.com/yomunsam/TinaX.Core.git`
+- [io.nekonya.tinax.core](https://github.com/yomunsam/tinax.core) :`git://github.com/yomunsam/TinaX.Core.git`
 
 <br><br>
 
@@ -81,12 +81,12 @@ Tween.Play(1, 10)
 
 ## Learn TinaX
 
-您可以访问TinaX的[文档页面](https://tinax.corala.space/#/cmn-hans)来学习了解各个功能的使用
+You can find out how to use the various features of TinaX in the [documentation](https://tinax.corala.space)
 
 ------
 
 ## Third-Party
 
-本项目中使用了以下优秀的第三方库：
+The following excellent third-party libraries are used in this project:
 
 - **[TweenRx](https://github.com/fumobox/TweenRx)** : (MIT License)Reactive animation utility for Unity.
