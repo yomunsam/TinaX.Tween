@@ -121,6 +121,7 @@ namespace TinaX.Tween.Components
             }
             else
             {
+                this.TweenRxDisposable = null;
                 this.Finish();
             }
         }
